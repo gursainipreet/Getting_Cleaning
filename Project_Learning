@@ -1,0 +1,27 @@
+#--------------------------------------------------------------------------------
+Therefore, lets define col.names to be length X (where X is the max number of fields in your dataset),
+and set fill = TRUE:
+
+read.table(dat, header = FALSE, sep = ",", 
+           col.names = paste0("V",seq_len(7)), fill = TRUE)
+
+If the maximum number of fields is unknown, you can use the nifty utility function count.fields (which I found in the read.table example code):
+      
+      count.fields(dat, sep = ',')
+# [1] 2 3 2 2 2 2 3 3 7
+max(count.fields(dat, sep = ','))
+# [1] 7
+
+read.table(file, header = FALSE, sep = "", quote = "\"'",
+           dec = ".", numerals = c("allow.loss", "warn.loss", "no.loss"),
+           row.names, col.names, as.is = !stringsAsFactors,
+           na.strings = "NA", colClasses = NA, nrows = -1,
+           skip = 0, check.names = TRUE, fill = !blank.lines.skip,
+           strip.white = FALSE, blank.lines.skip = TRUE,
+           comment.char = "#",
+           allowEscapes = FALSE, flush = FALSE,
+           stringsAsFactors = default.stringsAsFactors(),
+           fileEncoding = "", encoding = "unknown", text, skipNul = FALSE)
+
+
+#------------------------------------------------------------------------------
